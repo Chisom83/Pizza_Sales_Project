@@ -6,6 +6,10 @@ This project focuses on analyzing pizza sales data to derive bussiness insight a
 
 [Bussines Requirements](#bussines-requirements)
 
+[Data Source](#data-source)
+
+[Tools Used](#tools-used)
+
 ### Bussines Requirements
 1. Identify best-performing products to maximize revenue: Which pizza generates the higest sales by quantity.
 2. Understand customer behaviour to optimize the menu: Which ingredients are used most frequently.
@@ -26,4 +30,19 @@ This project focuses on analyzing pizza sales data to derive bussiness insight a
 4. Ingredient usage ranking.
 5. Seasonal revenue patterns.
 
-###
+### Data Source 
+The dataset used for this analysis was obtained from Kaggle and can be accessed using this link [Download Here](https://www.kaggle.com)
+
+### Tools Used
+Structured Query Language (SQL) 
+- for Data Cleaning
+- for Data Transformation
+- for Exploratory Data Analysis
+
+Power Bi
+- for Visualization
+- for Data Modeling
+
+Github
+- for portfolio building and
+- Project Documentation
