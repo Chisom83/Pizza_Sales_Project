@@ -57,3 +57,21 @@ FROM pizza_sale_clean
 GROUP BY pizza_name, pizza_size
 ORDER BY total_sales DESC;
 ```
+
+--- Which ingredient are used most frequently
+```sql
+SELECT pizza_ingredient,
+	COUNT(pizza_ingredient) 
+FROM pizza_sale_clean
+GROUP BY pizza_ingredient
+ORDER BY pizza_ingredient DESC;
+```
+---Identify sales patterns for better resource planning,what are the peak hours for sales
+```sql
+SELECT pizza_name,pizza_size,pizza_category,
+	EXTRACT(HOUR FROM order_time) AS sales_hour,
+	SUM(total_price) AS total_sales
+FROM pizza_sale_clean
+GROUP BY pizza_name, pizza_size, pizza_category,sales_hour
+ORDER BY total_sales DESC;
+```
