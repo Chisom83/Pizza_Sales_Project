@@ -66,6 +66,7 @@ FROM pizza_sale_clean
 GROUP BY pizza_ingredient
 ORDER BY pizza_ingredient DESC;
 ```
+
 ---Identify sales patterns for better resource planning,what are the peak hours for sales
 ```sql
 SELECT pizza_name,pizza_size,pizza_category,
@@ -74,4 +75,48 @@ SELECT pizza_name,pizza_size,pizza_category,
 FROM pizza_sale_clean
 GROUP BY pizza_name, pizza_size, pizza_category,sales_hour
 ORDER BY total_sales DESC;
+```
+
+---Drive revenue growth through pricing and promotion,which pizza categories generatethe highest revenue.
+```sql
+SELECT pizza_category,
+	SUM(total_price) AS revenue
+FROM pizza_sale_clean
+GROUP BY pizza_category
+ORDER BY revenue DESC;
+```
+
+---Which month generates the highest revenue
+```sql
+SELECT
+	CASE
+	WHEN month = 1 THEN 'January'
+	WHEN month = 2 THEN 'February'
+	WHEN month = 3 THEN 'March'
+	WHEN month = 4 THEN 'April'
+	WHEN month = 5 THEN 'May'
+	WHEN month = 6 THEN 'June'
+	WHEN month = 7 THEN 'July'
+	WHEN month = 8 THEN 'August'
+	WHEN month = 9 THEN 'September'
+	WHEN month = 10 THEN 'October'
+	WHEN month = 11 THEN 'November'
+	WHEN month = 12 THEN 'December'
+	END AS month,total_revenue
+FROM (
+SELECT 
+	EXTRACT(MONTH FROM order_date) AS month,
+	SUM(total_price) AS total_revenue
+FROM pizza_sale_clean
+GROUP BY month) AS monthly_revenue
+ORDER BY total_revenue DESC;
+```
+
+---Rank pizza by total sales using a window function.
+```sql
+SELECT pizza_name,
+	SUM(total_price) AS total_sales,
+	RANK() OVER(ORDER BY SUM(total_price)DESC) AS sales_rank
+FROM pizza_sale_clean
+GROUP BY pizza_name;
 ```
