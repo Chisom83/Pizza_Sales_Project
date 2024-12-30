@@ -24,7 +24,7 @@ This project focuses on analyzing pizza sales data to derive bussiness insight a
 3. Revenue Optimization Dashboard: Revenue by pizza size and category, Contribution of top 5 pizzas to total revenue.
 
 ### Key Performance Indicator (KPIs)
-1. Totalsales by pizza,category and size.
+1. Total sales by pizza,category and size.
 2. Revenue trend by month.
 3. Peak sales hours and days.
 4. Ingredient usage ranking.
