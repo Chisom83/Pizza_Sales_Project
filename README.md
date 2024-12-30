@@ -10,6 +10,8 @@ This project focuses on analyzing pizza sales data to derive bussiness insight a
 
 [Tools Used](#tools-used)
 
+[Exploratory Data Analysis](#exploratory-data-analysis)
+
 ### Bussines Requirements
 1. Identify best-performing products to maximize revenue: Which pizza generates the higest sales by quantity.
 2. Understand customer behaviour to optimize the menu: Which ingredients are used most frequently.
