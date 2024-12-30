@@ -46,3 +46,14 @@ Power Bi
 Github
 - for portfolio building and
 - Project Documentation
+
+### Exploratory Data Analysis
+---Analyze sales performance, which pizza generate higest sales by quantity
+```Sql
+SELECT pizza_name,
+	pizza_size,
+	SUM(quantity) AS total_sales
+FROM pizza_sale_clean
+GROUP BY pizza_name, pizza_size
+ORDER BY total_sales DESC;
+```
