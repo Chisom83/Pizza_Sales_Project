@@ -12,25 +12,23 @@ This project focuses on analyzing pizza sales data to derive bussiness insight a
 
 [Exploratory Data Analysis](#exploratory-data-analysis)
 
-### Bussines Requirements
-1. Identify best-performing products to maximize revenue: Which pizza generates the higest sales by quantity.
-2. Understand customer behaviour to optimize the menu: Which ingredients are used most frequently.
-3. Identity sales patterns for better resource planning: What are the peak hours for sales.
-4. Drive revenue growth through pricing and promotion: which pizza categories generates the highest revenue.
-5. Adjust inventory and promotions for seasonal trends: Which months generates the highest revenue.
-6. Find the top-performing pizza: Rank pizza by total sales using a window function.
+### Business Requirements
+### KPIs
+1. Total Revenue: The sum of the total price of all pizza orders. 
+2. Total Sales: The sum of the quantities of all the pizza sold.
+3. Average Order Value: The average amount spentper order, calculated by dividing the total revenue by the total number of orders.
+4. Total Orders: The total number of orders placed
+5. Average Pizza Per Orders: The average number of pizzas sold per orders, calculated by dividing the total number of pizza sold by the total number of orders.
 
-### Power Bi visuals
-1. Sales Overview Dashboard: Total sales and revenue by pizza name, Monthly sales trend.
-2. Customer Behaviour Dashboard: Pizza size popularity, Sales by hour and weekday.
-3. Revenue Optimization Dashboard: Revenue by pizza size and category, Contribution of top 5 pizzas to total revenue.
-
-### Key Performance Indicator (KPIs)
-1. Total sales by pizza,category and size.
-2. Revenue trend by month.
-3. Peak sales hours and days.
-4. Ingredient usage ranking.
-5. Seasonal revenue patterns.
+### Exploratory Data Analysis
+1. Which pizza generates the higest sales by quantity: Identify best-performing pizza to maximize revenue.
+2. Which ingredients are used most frequently: Understand customer behaviour to optimize the menu.
+3. What are the peak hours for sales: Identity sales patterns to optimize marketing strategies and inventory planning. 
+4. Which pizza categories generates the highest revenue: Drive revenue growth through pricing and promotion.
+5. Which months generates the highest revenue: Adjust inventory and promotions for seasonal trends.
+6.Rank pizza by total sales using a window function: Find the top-performing pizza.
+7. Monthly revenue trend: Identify seasonal patterns and high-performing products to guide future planning.
+8. Pizza size popularity: Understand customer behaviour to tailor offering and marketing campaigns.
 
 ### Data Source 
 The dataset used for this analysis was obtained from Kaggle and can be accessed using this link [Download Here](https://www.kaggle.com)
@@ -48,6 +46,45 @@ Power Bi
 Github
 - for portfolio building and
 - Project Documentation
+
+### Key Performance Indicator (KPIs)
+---Total Revenue
+```sql
+SELECT
+	SUM(total_price) AS Total_Revenue
+FROM pizza_sale_clean;
+```
+
+---Total Sales
+```sql
+SELECT 
+ 	COUNT(quantity) AS Total_sales
+FROM pizza_sale_clean;
+```
+
+---Total Orders
+```sql
+SELECT
+ 	COUNT(DISTINCT order_id) AS Total_orders
+FROM pizza_sale_clean;
+```
+
+---Average Order Value
+```sql
+SELECT
+	SUM(total_price)/
+	COUNT(DISTINCT order_id) AS Average_order_Value
+FROM pizza_sale_clean;
+```
+
+---Average Pizza Per Orders
+```sql
+SELECT
+	CAST(SUM(quantity)AS DECIMAL(10,2))/
+ 	CAST(COUNT(DISTINCT order_id) AS DECIMAL(10,2)) AS Avg_Pizza_Per_Order
+FROM pizza_sale_clean;
+```
+
 
 ### Exploratory Data Analysis
 ---Analyze sales performance, which pizza generate higest sales by quantity
